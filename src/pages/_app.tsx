@@ -1,21 +1,14 @@
+import type { AppProps } from 'next/app';
 import 'tailwindcss/tailwind.css';
-import PageWithLayoutType from '@/types/pageWithLayout';
-import { ThemeProvider } from '@/components/index';
+import { ThemeProvider, GlobalStyles } from '@/components/index';
 
-type AppLayoutProps = {
-  Component: PageWithLayoutType;
-  pageProps: any;
-};
-
-export default function MyApp({ Component, pageProps }: AppLayoutProps) {
-  const Layout = Component.layout || ((children: any) => <>{children}</>);
-
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider>
-        <Layout>
+        <GlobalStyles>
           <Component {...pageProps} />
-        </Layout>
+        </GlobalStyles>
       </ThemeProvider>
     </>
   );
