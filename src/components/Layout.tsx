@@ -1,14 +1,19 @@
 import React from 'react';
+import { Header } from './Header';
+import { Sidebar } from './Sidebar';
 
 type LayoutProps = {
   children?: React.ReactNode;
 };
 
-export const Layout = ({ children }: LayoutProps) => (
+export const Layout = ({ children }: LayoutProps): JSX.Element => (
   <>
-    <div className="min-h-screen flex items-start">
-      <></>
-      <div className="flex-1">{children}</div>
+    <div className="h-screen flex items-start">
+      <Sidebar />
+      <div className="flex flex-col flex-1">
+        <Header />
+        <div className="flex-1">{children}</div>
+      </div>
     </div>
   </>
 );

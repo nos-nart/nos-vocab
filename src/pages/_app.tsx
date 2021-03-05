@@ -1,13 +1,15 @@
 import type { AppProps } from 'next/app';
 import 'tailwindcss/tailwind.css';
-import { ThemeProvider, GlobalStyles } from '@/components/index';
+import { ThemeProvider, GlobalStyles, Layout } from '@/components/index';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider>
         <GlobalStyles>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </GlobalStyles>
       </ThemeProvider>
     </>
