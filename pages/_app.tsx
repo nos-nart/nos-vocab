@@ -1,30 +1,12 @@
-// import App from "next/app";
-import type { AppProps /*, AppContext */ } from 'next/app';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-
-const fonts = {
-  body: 'Inter, -apple-system, BlinkMacSystemFont',
+export interface AppRenderProps {
+  pageProps: object
+  err?: Error
+  Component: NextComponentType<NextPageContext, AppRenderProps, object>
+  router: NextRouter
 }
+import type { NextComponentType, NextPageContext } from 'next'
+import type { NextRouter } from 'next/router'
 
-const theme = extendTheme({
-  styles: {
-    global: {
-      'body': {
-        scrollBehavior: 'smooth'
-      },
-      '#__next': {
-        minHeight: '100vh'
-      }
-    }
-  },
-  fonts
-});
-
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Component {...pageProps} />
-    </>
-  )
+export default function App({ Component, pageProps }: AppRenderProps) {
+  return <Component {...pageProps} />
 }
-export default MyApp
