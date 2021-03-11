@@ -1,5 +1,5 @@
-import { NextSeo } from 'next-seo'
-import { Button } from '@chakra-ui/react'
+import { NextSeo } from 'next-seo';
+import { Button } from '@chakra-ui/react';
 
 export default function Home() {
   return (
