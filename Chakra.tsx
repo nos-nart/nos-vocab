@@ -3,9 +3,9 @@ import {
   cookieStorageManager,
   localStorageManager,
   extendTheme,
-} from '@chakra-ui/react'
-import { GetServerSidePropsContext } from 'next'
-import { ReactNode } from 'react'
+} from '@chakra-ui/react';
+import { GetServerSidePropsContext } from 'next';
+import { ReactNode } from 'react';
 
 const fonts = {
   body: 'Inter, -apple-system, BlinkMacSystemFont',
