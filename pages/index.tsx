@@ -1,5 +1,10 @@
 import { NextSeo } from 'next-seo';
 import { Button } from '@chakra-ui/react';
+// import dynamic from 'next/dynamic';
+
+// const UnauthenticatedComponent = dynamic(() =>
+//   import('../components/unauthenticated')
+// )
 
 export default function Home() {
   return (
