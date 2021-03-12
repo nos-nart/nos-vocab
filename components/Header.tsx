@@ -48,24 +48,33 @@ function LoginButton() {
       onClick={() => {
         setIsLoading(true);
         signIn("google", {
-          callbackUrl: `/`,
+          callbackUrl: `${process.env.NEXTAUTH_URL}/`,
         });
       }}
     >
       <Text mr={2}>Log in</Text>
-      <GoogleIcon width={25}/>
+      <GoogleIcon width={20}/>
     </Button>
   )
 }
 
 function LoggedInButton() {
   const [session] = useSession();
+  console.log("🚀 ~ file: Header.tsx ~ line 63 ~ LoggedInButton ~ session", session)
 
   return (
     <>
       <Flex alignItems="center">
-        <Avatar size={'md'} src="https://bit.ly/broken-link" />
-        <Button onClick={() => signOut({ callbackUrl: "/" })}>Log out</Button>
+        <Text fontSize={'xs'}>user_name</Text>
+        <Avatar mx={3} size={'sm'} src="https://bit.ly/broken-link" />
+        <Button
+          colorScheme="green"
+          variant="outline"
+          size={'sm'}
+          onClick={() => signOut({ callbackUrl: "/" })}
+        >
+          Log out
+        </Button>
       </Flex>
     </>
   )

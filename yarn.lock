@@ -3527,11 +3527,6 @@ next-auth@^3.11.2:
     require_optional "^1.0.1"
     typeorm "^0.2.30"
 
-next-google-fonts@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/next-google-fonts/-/next-google-fonts-2.0.0.tgz#ea261b144e41e0a963d00a8178ccebc00f19bd33"
-  integrity sha512-wQmJoEfsX24Hx86cz25tdGfLlNq/mcji9WwXOYGQRQ21A8D7eJg0GH26hEEeBz9kbwB7W2ZC1aWZ7pUgPGXxcg==
-
 next-seo@^4.20.0:
   version "4.20.0"
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.20.0.tgz#54b629abf93c7c051919802db011882f67004249"

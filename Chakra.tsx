@@ -6,24 +6,24 @@ import {
 } from '@chakra-ui/react';
 import { GetServerSidePropsContext } from 'next';
 import { ReactNode } from 'react';
+import { Global } from "@emotion/react";
 
 const fonts = {
   body: 'Inter, -apple-system, BlinkMacSystemFont',
 }
-
 const theme = extendTheme({
   styles: {
     global: {
-      body: {
-        scrollBehavior: 'smooth',
+      'body': {
+        scrollBehavior: 'smooth'
       },
       '#__next': {
-        minHeight: '100vh',
-      },
-    },
+        minHeight: '100vh'
+      }
+    }
   },
-  fonts,
-})
+  fonts
+});
 
 interface ChakraProps {
   cookies?: string
