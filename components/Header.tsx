@@ -65,8 +65,8 @@ function LoggedInButton() {
   return (
     <>
       <Flex alignItems="center">
-        <Text fontSize={'xs'}>user_name</Text>
-        <Avatar mx={3} size={'sm'} src="https://bit.ly/broken-link" />
+        <Text fontSize={'xs'}>{session?.user.name}</Text>
+        <Avatar mx={3} size={'sm'} src={session?.user.image} />
         <Button
           colorScheme="green"
           variant="outline"

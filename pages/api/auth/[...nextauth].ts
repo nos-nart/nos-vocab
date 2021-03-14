@@ -22,21 +22,22 @@ const options: InitOptions = {
     secret: process.env.NEXTAUTH_JWE_SECRET
   },
   callbacks: {
-    // async redirect(_, baseUrl: string) {
-    //   return baseUrl;
-    // },
-    // async jwt(token: {[key: string]: string}, user: any) {
-    //   if (user?.id) {
-    //     token.userId = user.id;
-    //   }
-    //   return token;
-    // },
-    // async session(session: any, token: any) {
-    //   if (token?.userId) {
-    //     session.user.id = token.userId
-    //   }
-    //   return 
-    // }
+    async redirect(_, baseUrl) {
+      return baseUrl;
+    },
+    async jwt(token, user) {
+      if (user?.id) {
+        token.userId = user.id;
+      }
+      return token;
+    },
+    async session(session: any, token: any) {
+      console.log("🚀 ~ file: [...nextauth].ts ~ line 35 ~ session ~ session", session);
+      if (token?.userId) {
+        session.user.id = token.userId
+      }
+      return 
+    }
   },
   database: process.env.MONGO_URI
 }
