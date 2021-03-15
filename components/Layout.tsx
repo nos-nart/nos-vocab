@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
@@ -11,21 +11,15 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <>
-      <div className="layout__wrapper">
+      <Box h={'100%'} minHeight={'100vh'}>
         <Header />
         <Flex>
           <Sidebar />
-          <Flex>
+          <Flex style={{ marginLeft: '250px' }} p={6} flexGrow={1}>
             {children}
           </Flex>
         </Flex>
-      </div>
-      <style jsx>{`
-        .layout__wrapper {
-          min-height: '100vh',
-          width: '100vw'
-        }
-      `}</style>
+      </Box>
     </>
   )
 }

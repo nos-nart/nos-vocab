@@ -27,7 +27,9 @@ export const Header = (): JSX.Element => {
     <>
       <header>
         <Flex
-          background={colorMode === 'light' ? 'gray.300' : 'gray.900'}
+          background={colorMode === "light" ? "gray.300" : "gray.900"}
+          borderBottom={"1px"}
+          borderBottomColor={colorMode === "light" ? "transparent" : "gray.700"}
           height={'16'}
           px={8}
           justifyContent="space-between"
@@ -35,7 +37,7 @@ export const Header = (): JSX.Element => {
         >
           <Flex alignItems="center">
             <AppLogo width={45} />
-            <Text as="span" lineHeight={3} fontSize={'xs'} ml={2} fontWeight={'bold'}>nos<br/>vocab</Text>
+            <Text as="span" lineHeight={3} fontSize={'xs'} ml={2} fontWeight={'bold'} textColor={'blue.500'}>nos<br/>vocab</Text>
           </Flex>
           <Box display="flex" alignItems="center">
             <ColorModeSwitcher justifySelf="flex-end" mr={4} />
@@ -55,9 +57,10 @@ function LoginButton() {
     <Button
       isLoading={isLoading}
       loadingText="Logging"
-      colorScheme="green"
+      colorScheme={"blue"}
       variant="outline"
       size={'sm'}
+      borderWidth={'medium'}
       onClick={() => {
         setIsLoading(true);
         signIn("google", {
