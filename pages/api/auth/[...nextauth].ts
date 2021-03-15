@@ -1,7 +1,6 @@
-import NextAuth, { InitOptions  } from 'next-auth';
+import NextAuth, { InitOptions } from 'next-auth';
 import Providers from 'next-auth/providers';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { redirect } from 'next/dist/next-server/server/api-utils';
 
 const options: InitOptions = {
   providers: [
@@ -22,21 +21,22 @@ const options: InitOptions = {
     secret: process.env.NEXTAUTH_JWE_SECRET
   },
   callbacks: {
-    async redirect(_, baseUrl) {
+    // NOTE: https://github.com/nextauthjs/next-auth/blob/e31db1726a11327990b13c4e51f0ec077a9f0608/src/server/lib/callbacks.d.ts#L2
+    async redirect(_: any, baseUrl: string): Promise<string> {
       return baseUrl;
     },
-    async jwt(token, user) {
+    async jwt(token: any, user: any, account: any, profile: any, isNewUser?: boolean): Promise<any> {
       if (user?.id) {
         token.userId = user.id;
       }
       return token;
     },
-    async session(session: any, token: any) {
+    async session(session: any, token: any): Promise<any> {
       console.log("🚀 ~ file: [...nextauth].ts ~ line 35 ~ session ~ session", session);
       if (token?.userId) {
-        session.user.id = token.userId
+        session.user.id = token.userId;
       }
-      return 
+      return session;
     }
   },
   database: process.env.MONGO_URI

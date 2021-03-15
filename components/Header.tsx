@@ -1,6 +1,18 @@
 import React from 'react';
-import { Flex, Text, Box, Button, Avatar } from '@chakra-ui/react';
+import {
+  Flex,
+  Text,
+  Box,
+  Button,
+  Avatar,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem
+} from '@chakra-ui/react';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import { ChevronDownIcon, InfoIcon, UnlockIcon } from '@chakra-ui/icons';
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { AppLogo } from './AppLogo';
@@ -48,7 +60,7 @@ function LoginButton() {
       onClick={() => {
         setIsLoading(true);
         signIn("google", {
-          callbackUrl: `${process.env.NEXTAUTH_URL}/`,
+          callbackUrl: `${process.env.NEXTAUTH_URL}`,
         });
       }}
     >
@@ -66,15 +78,28 @@ function LoggedInButton() {
     <>
       <Flex alignItems="center">
         <Text fontSize={'xs'}>{session?.user.name}</Text>
-        <Avatar mx={3} size={'sm'} src={session?.user.image} />
-        <Button
-          colorScheme="green"
-          variant="outline"
-          size={'sm'}
-          onClick={() => signOut({ callbackUrl: "/" })}
-        >
-          Log out
-        </Button>
+        <Avatar mx={3} size={'md'} src={session?.user.image} />
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label="Profile"
+            icon={<ChevronDownIcon />}
+            size="sm"
+            variant="outline"
+          />
+          <MenuList>
+            <MenuItem icon={<InfoIcon />}>
+              Profile
+            </MenuItem>
+            <MenuItem
+              as="button"
+              icon={<UnlockIcon />}
+              onClick={() => signOut({ callbackUrl: "/" })}
+            >
+              Log out
+            </MenuItem>
+          </MenuList>
+        </Menu>
       </Flex>
     </>
   )
