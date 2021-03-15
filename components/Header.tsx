@@ -9,7 +9,8 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem
+  MenuItem,
+  useColorMode,
 } from '@chakra-ui/react';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { ChevronDownIcon, InfoIcon, UnlockIcon } from '@chakra-ui/icons';
@@ -20,13 +21,13 @@ import GoogleIcon from '../svg/googleicon.svg';
 
 export const Header = (): JSX.Element => {
   const [session] = useSession();
+  const { colorMode } = useColorMode();
 
   return (
     <>
       <header>
         <Flex
-          borderBottom="1px"
-          borderBottomColor="gray.200"
+          background={colorMode === 'light' ? 'gray.300' : 'gray.900'}
           height={'16'}
           px={8}
           justifyContent="space-between"
@@ -72,7 +73,6 @@ function LoginButton() {
 
 function LoggedInButton() {
   const [session] = useSession();
-  console.log("🚀 ~ file: Header.tsx ~ line 63 ~ LoggedInButton ~ session", session)
 
   return (
     <>

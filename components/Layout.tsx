@@ -2,6 +2,7 @@ import React from 'react';
 import { Flex } from '@chakra-ui/react';
 
 import { Header } from './Header';
+import { Sidebar } from './Sidebar';
 
 interface LayoutProps {
   children?: React.ReactNode
@@ -12,7 +13,12 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
     <>
       <div className="layout__wrapper">
         <Header />
-        {children}
+        <Flex>
+          <Sidebar />
+          <Flex>
+            {children}
+          </Flex>
+        </Flex>
       </div>
       <style jsx>{`
         .layout__wrapper {
