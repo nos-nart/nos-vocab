@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, useColorMode, Text } from '@chakra-ui/react';
+import { Box, useColorMode, Text, Icon } from '@chakra-ui/react';
 
 import { SidebarLink } from './SidebarLink';
 import { BookmarkIcon, HashTagIcon, PuzzleIcon, QuoteIcon, SwordIcon, TrophyIcon } from './svgs';
@@ -19,28 +19,22 @@ export const Sidebar = (): JSX.Element => {
         py={6}
       >
         <SidebarLink href={'/newwords'}>
-          <SwordIcon width={25}/>
-          <Text ml={3}>new words</Text>
+          <Icon as={SwordIcon} mr={3} w={7} h={7} />new words
         </SidebarLink>
         <SidebarLink href={'/phrasalverb'}>
-          <PuzzleIcon width={25}/>
-          <Text ml={3}>phrasal verb</Text>
+          <Icon as={PuzzleIcon} mr={3} w={7} h={7} />phrasal verb
         </SidebarLink>
         <SidebarLink href={'/quotes'}>
-          <QuoteIcon width={25}/>
-          <Text ml={3}>quotes</Text>
+          <Icon as={QuoteIcon} mr={3} w={7} h={7} />quotes
         </SidebarLink>
         <SidebarLink href={'/bookmark'}>
-          <BookmarkIcon width={25}/>
-          <Text ml={3}>bookmark</Text>
+          <Icon as={BookmarkIcon} mr={3} w={7} h={7} />bookmark
         </SidebarLink>
         <SidebarLink href={'/archived'}>
-          <TrophyIcon width={25}/>
-          <Text ml={3}>archived</Text>
+          <Icon as={TrophyIcon} mr={3} w={7} h={7} />archived
         </SidebarLink>
         <SidebarLink href={'/til'}>
-          <HashTagIcon width={25}/>
-          <Text ml={3}>TIL</Text>
+          <Icon as={HashTagIcon} mr={3} w={7} h={7} />TIL
         </SidebarLink>
       </Box>
     </>

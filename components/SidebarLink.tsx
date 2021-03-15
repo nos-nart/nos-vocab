@@ -27,6 +27,7 @@ export const SidebarLink: FC<LinkProps> = ({ href, ...props }) => {
           overflow: hidden;
           padding: 1rem 2rem;
           display: inline-flex;
+          align-items: center;
           width: 100%;
         }
         a::before {
