@@ -32,7 +32,6 @@ const options: InitOptions = {
       return token;
     },
     async session(session: any, token: any): Promise<any> {
-      console.log("🚀 ~ file: [...nextauth].ts ~ line 35 ~ session ~ session", session);
       if (token?.userId) {
         session.user.id = token.userId;
       }

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Box, useColorMode, Text, Icon, VStack } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 
 import { SidebarLink } from './SidebarLink';
+import { Emoji } from './Emoji';
 import { BookmarkIcon, HashTagIcon, PuzzleIcon, QuoteIcon, SwordIcon, TrophyIcon } from './svgs';
 
 export const Sidebar = (): JSX.Element => {
@@ -17,7 +19,7 @@ export const Sidebar = (): JSX.Element => {
         background={colorMode === 'light' ? "gray.100" : "gray.900"}
         borderColor={colorMode === 'light' ? "gray.300" : "gray.700"}
         width={250}
-        pos="fixed"
+        pos={'fixed'}
         top={16}
         py={6}
       >
@@ -41,7 +43,14 @@ export const Sidebar = (): JSX.Element => {
             <Icon as={HashTagIcon} mr={3} w={7} h={7} />TIL
           </SidebarLink>
         </VStack>
-        <Text>@nosnart</Text>
+        <VStack textAlign={'center'} fontSize={'xs'}>
+          <Text px={4}>@{dayjs().get('year')} nosnart</Text>
+          <Text>
+            Made by <Emoji symbol={`💻`} label={'keyboard'}/>
+            <Text as="span" mx={2}>with</Text>
+            <Emoji symbol={`❤️`} label={'heart'} />
+          </Text>
+        </VStack>
       </Box>
     </>
   )
