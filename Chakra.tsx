@@ -6,7 +6,7 @@ import {
 } from '@chakra-ui/react';
 import { GetServerSidePropsContext } from 'next';
 import { ReactNode } from 'react';
-import { Global } from "@emotion/react";
+import fetch from 'node-fetch';
 
 const fonts = {
   body: 'Inter, -apple-system, BlinkMacSystemFont',
@@ -43,11 +43,13 @@ export const Chakra = ({ children, cookies }: ChakraProps) => {
   )
 }
 
-export type ServerSideProps<T> = { props: T } | Promise<{ props: T }>
+// export type ServerSideProps<T> = { props: T } | Promise<{ props: T }>
 
-export function getServerSideProps({
+export async function getServerSideProps({
   req,
-}: GetServerSidePropsContext): ServerSideProps<{ cookies?: string }> {
+}: GetServerSidePropsContext): Promise<any> {
+  const result = await fetch('http://localhost:3000/api/words');
+  console.log('json ~> ', result.json());
   return {
     props: {
       cookies: req.headers.cookie ?? '',

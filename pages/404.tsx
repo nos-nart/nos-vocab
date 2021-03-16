@@ -1,10 +1,11 @@
 import React from 'react';
+import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import { Flex, Text } from '@chakra-ui/react';
 
 import StrawMan from '../svg/strawman.svg';
 
-const NotFoundPage = () => {
+const NotFoundPage: NextPage = () => {
   return (
     <>
       <NextSeo title="404" description="you lost!" />

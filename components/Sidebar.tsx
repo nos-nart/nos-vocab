@@ -25,22 +25,22 @@ export const Sidebar = (): JSX.Element => {
       >
         <VStack>
           <SidebarLink href={'/newwords'}>
-            <Icon as={SwordIcon} mr={3} w={7} h={7} />new words
+            <Icon as={SwordIcon} mr={3} w={6} h={6} />new words
           </SidebarLink>
           <SidebarLink href={'/phrasalverb'}>
-            <Icon as={PuzzleIcon} mr={3} w={7} h={7} />phrasal verb
+            <Icon as={PuzzleIcon} mr={3} w={6} h={6} />phrasal verb
           </SidebarLink>
           <SidebarLink href={'/quotes'}>
-            <Icon as={QuoteIcon} mr={3} w={7} h={7} />quotes
+            <Icon as={QuoteIcon} mr={3} w={6} h={6} />quotes
           </SidebarLink>
           <SidebarLink href={'/bookmark'}>
-            <Icon as={BookmarkIcon} mr={3} w={7} h={7} />bookmark
+            <Icon as={BookmarkIcon} mr={3} w={6} h={6} />bookmark
           </SidebarLink>
           <SidebarLink href={'/archived'}>
-            <Icon as={TrophyIcon} mr={3} w={7} h={7} />archived
+            <Icon as={TrophyIcon} mr={3} w={6} h={6} />archived
           </SidebarLink>
           <SidebarLink href={'/til'}>
-            <Icon as={HashTagIcon} mr={3} w={7} h={7} />TIL
+            <Icon as={HashTagIcon} mr={3} w={6} h={6} />TIL
           </SidebarLink>
         </VStack>
         <VStack textAlign={'center'} fontSize={'xs'}>

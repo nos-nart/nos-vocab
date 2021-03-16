@@ -12,6 +12,7 @@ import {
   MenuItem,
   useColorMode,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
 import { ChevronDownIcon, InfoIcon, UnlockIcon } from '@chakra-ui/icons';
 
@@ -35,10 +36,14 @@ export const Header = (): JSX.Element => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Flex alignItems="center">
-            <AppLogo width={45} />
-            <Text as="span" lineHeight={3} fontSize={'xs'} ml={2} fontWeight={'bold'} textColor={'blue.500'}>nos<br/>vocab</Text>
-          </Flex>
+          <Link href={'/'}>
+            <a>
+              <Flex alignItems="center">
+                <AppLogo width={45} />
+                <Text as="span" lineHeight={3} fontSize={'xs'} ml={2} fontWeight={'bold'} textColor={'blue.500'}>nos<br/>vocab</Text>
+              </Flex>
+            </a>
+          </Link>
           <Box display="flex" alignItems="center">
             <ColorModeSwitcher justifySelf="flex-end" mr={4} />
             {!session && <LoginButton />}
