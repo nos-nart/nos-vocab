@@ -7,6 +7,8 @@ import {
 import { GetServerSidePropsContext } from 'next';
 import { ReactNode } from 'react';
 import fetch from 'node-fetch';
+import { server } from '@/config/index';
+import { fetcher } from '@/utils/fetcher';
 
 const fonts = {
   body: 'Inter, -apple-system, BlinkMacSystemFont',
@@ -43,16 +45,18 @@ export const Chakra = ({ children, cookies }: ChakraProps) => {
   )
 }
 
-// export type ServerSideProps<T> = { props: T } | Promise<{ props: T }>
-
 export async function getServerSideProps({
   req,
 }: GetServerSidePropsContext): Promise<any> {
-  const result = await fetch('http://localhost:3000/api/words');
-  console.log('json ~> ', result.json());
+  const result = await fetch(`${server}/api/words`);
+  console.log("🚀 ~ file: Chakra.tsx ~ line 52 ~ result", result)
+  const data = await result.json();
+  console.log("🚀 ~ file: Chakra.tsx ~ line 53 ~ data", data)
+  // const data = await fetcher('/api/words');
   return {
     props: {
       cookies: req.headers.cookie ?? '',
+      data,
     },
   }
 }

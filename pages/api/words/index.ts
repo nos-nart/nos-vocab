@@ -7,12 +7,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
   try {
     if (!session) {
-      res.status(401).send('Unauthorized');
+      return res.status(401).send('Unauthorized');
     }
     const words = await getWords();
     console.log("🚀 ~ file: index.ts ~ line 13 ~ words", words);
-    res.status(200).json({ words });
+    return res.status(200).json({ words });
   } catch (error) {
-    res.status(400).json({ error });
+    return res.status(400).json({ error });
   }
 }

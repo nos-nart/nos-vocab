@@ -1,6 +1,6 @@
 import { connectToDB } from '@/utils/connectToDB';
-import User from '@/models/user.model';
-import Word from '@/models/word.model';
+import { User } from '@/models/user.model';
+import { Word } from '@/models/word.model';
 
 export const getUser = async (userId: string): Promise<any> => {
   await connectToDB();

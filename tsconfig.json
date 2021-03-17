@@ -6,6 +6,7 @@
       "@/utils/*": ["utils/*"],
       "@/models/*": ["models/*"],
       "@/lib/*": ["lib/*"],
+      "@/config/*": ["config/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

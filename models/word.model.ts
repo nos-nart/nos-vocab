@@ -22,6 +22,4 @@ const WordSchema: Schema = new Schema(
   }
 )
 
-const Word = mongoose.model<WordInterface>('Word', WordSchema);
-
-export default Word;
+export const Word = mongoose.models?.Word ?? mongoose.model<WordInterface>('Word', WordSchema);
