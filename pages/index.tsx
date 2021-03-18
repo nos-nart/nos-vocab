@@ -1,7 +1,9 @@
 import { NextSeo } from 'next-seo';
-import { Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import useSWR from 'swr';
+
 import { fetcher } from '@/utils/fetcher';
+import { EmptyState } from '@/components/EmptyState';
 
 // import dynamic from 'next/dynamic';
 
@@ -9,10 +11,22 @@ import { fetcher } from '@/utils/fetcher';
 //   import('../components/unauthenticated')
 // )
 
-export default function Home(props) {
-  // const initialData = props.data;
-  // const { data } = useSWR('/api/words', fetcher, { initialData });
-  // console.log("🚀 ~ file: index.tsx ~ line 15 ~ Home ~ data", data)
+export default function Home() {
+  const { data } = useSWR('/api/words', fetcher);
+
+  if (!data) {
+    return (
+      <Box
+        w={'100%'}
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        style={{ height: 'calc(100vh - 10rem)' }}
+      >
+        <EmptyState width={500} />
+      </Box>
+    )
+  }
 
   return (
     <>
@@ -20,7 +34,7 @@ export default function Home(props) {
         title="nosnart vocab"
         description="vocabulary is the foundation of language"
       />
-      <Button>test</Button>
+      {JSON.stringify(data, null , 2)}
     </>
   )
 }

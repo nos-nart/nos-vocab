@@ -27,7 +27,6 @@
     "node-fetch": "^2.6.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-icons": "^4.2.0",
     "swr": "^0.5.3",
     "unfetch": "^4.2.0"
   },

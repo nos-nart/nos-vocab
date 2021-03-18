@@ -14,11 +14,12 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
-import { ChevronDownIcon, InfoIcon, UnlockIcon } from '@chakra-ui/icons';
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { AppLogo } from './AppLogo';
 import GoogleIcon from '../svg/googleicon.svg';
+import { ProfileIcon, LogOutIcon, ChevronDownIcon } from './svgs';
+
 
 export const Header = (): JSX.Element => {
   const [session] = useSession();
@@ -91,17 +92,17 @@ function LoggedInButton() {
           <MenuButton
             as={IconButton}
             aria-label="Profile"
-            icon={<ChevronDownIcon />}
+            icon={<ChevronDownIcon width={20} />}
             size="sm"
             variant="outline"
           />
           <MenuList>
-            <MenuItem icon={<InfoIcon />}>
+            <MenuItem icon={<ProfileIcon width={20} />}>
               Profile
             </MenuItem>
             <MenuItem
               as="button"
-              icon={<UnlockIcon />}
+              icon={<LogOutIcon width={20} />}
               onClick={() => signOut({ callbackUrl: "/" })}
             >
               Log out
