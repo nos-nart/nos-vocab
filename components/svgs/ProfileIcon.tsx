@@ -9,7 +9,7 @@ export const ProfileIcon = (props: React.SVGProps<SVGSVGElement>) => (
       stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     <path
       d="M7.63867 20.9999C7.86062 20.1413 8.36153 19.3807 9.06272 18.8377C9.76391 18.2947 10.6256 18 11.5125 18C12.3994 18 13.2611 18.2946 13.9623 18.8375C14.6636 19.3805 15.1645 20.141 15.3865 20.9997"
-      stroke="currentColor" strokeWidth="2" stroke-linecap="round" strokeLinejoin="round" />
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     <path
       d="M27 6H5C4.44772 6 4 6.44772 4 7V25C4 25.5523 4.44772 26 5 26H27C27.5523 26 28 25.5523 28 25V7C28 6.44772 27.5523 6 27 6Z"
       stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

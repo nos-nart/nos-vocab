@@ -5,15 +5,26 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
+  FormErrorMessage,
+  FormLabel,
+  FormControl,
+  Input,
+  Box,
   useDisclosure
 } from "@chakra-ui/react";
-import { PlusIcon, CheckIcon, CancelIcon } from './svgs';
+import { useForm } from "react-hook-form";
+
+import { PlusIcon, CheckIcon } from './svgs';
  
 export const AddNewWord = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { handleSubmit, errors, register, formState } = useForm();
+
+  const onSubmit = (values) => {
+    console.log('values ~> ', values);
+  };
 
   return (
     <>
@@ -36,29 +47,44 @@ export const AddNewWord = (): JSX.Element => {
           <ModalHeader>Add new word to your learning process</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            This is the modal content
+            {/* NOTE: add new word form*/}
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <FormControl isInvalid={errors.word}>
+                <FormLabel htmlFor={'word'}>word</FormLabel>
+                <Input
+                  name="word"
+                  placeholder="Enter a word"
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: 'required this field'
+                    }
+                  })}
+                />
+                <FormErrorMessage>
+                  {errors.word && errors.word.message}
+                </FormErrorMessage>
+              </FormControl>
+              <Box display={'flex'} justifyContent={'space-between'} my={4}>
+                <Button
+                  mr={3}
+                  size="sm"
+                  variant={'ghost'}
+                  onClick={onClose}
+                >
+                  cancel
+                </Button>
+                <Button
+                  type="submit"
+                  size="sm"
+                  colorScheme={'green'}
+                  leftIcon={<CheckIcon width={20} />}
+                >
+                  add
+                </Button>
+              </Box>
+            </form>
           </ModalBody>
-
-          <ModalFooter display={'flex'} justifyContent={'space-between'}>
-            <Button
-              mr={3}
-              size="sm"
-              // leftIcon={<CancelIcon width={20} />}
-              variant={'ghost'}
-              // colorScheme={'purple'}
-              onClick={onClose}
-            >
-              cancel
-            </Button>
-            <Button
-              size="sm"
-              // variant={'outline'}
-              colorScheme={'green'}
-              leftIcon={<CheckIcon width={20} />}
-            >
-              add
-            </Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
