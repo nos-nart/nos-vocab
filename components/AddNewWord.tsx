@@ -10,7 +10,7 @@ import {
   ModalCloseButton,
   useDisclosure
 } from "@chakra-ui/react";
-import { PlusIcon } from './svgs';
+import { PlusIcon, CheckIcon, CancelIcon } from './svgs';
  
 export const AddNewWord = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,20 +25,39 @@ export const AddNewWord = (): JSX.Element => {
       >
         Add
       </Button>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        size={'2xl'}
+        isOpen={isOpen}
+        onClose={onClose}
+        motionPreset="slideInBottom"
+      >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Add new word to your learning process</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             This is the modal content
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
+          <ModalFooter display={'flex'} justifyContent={'space-between'}>
+            <Button
+              mr={3}
+              size="sm"
+              // leftIcon={<CancelIcon width={20} />}
+              variant={'ghost'}
+              // colorScheme={'purple'}
+              onClick={onClose}
+            >
+              cancel
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
+            <Button
+              size="sm"
+              // variant={'outline'}
+              colorScheme={'green'}
+              leftIcon={<CheckIcon width={20} />}
+            >
+              add
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

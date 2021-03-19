@@ -10,3 +10,5 @@ export * from './ProfileIcon';
 export * from './MoonFoggyIcon';
 export * from './SunFoggyIcon';
 export * from './ChevronDownIcon';
+export * from './CancelIcon';
+export * from './CheckIcon';
