@@ -1,11 +1,31 @@
 import React from 'react';
 import { NextPage } from 'next';
-import { VStack, Text, Flex } from '@chakra-ui/layout';
+import { VStack, Text, Flex, Box } from '@chakra-ui/layout';
+import useSWR from 'swr';
+import { fetcher } from '@/utils/fetcher';
 
 import { Emoji } from '@/components/Emoji';
+import { EmptyState } from '@/components/EmptyState';
 import { AddNewWord } from '@/components/AddNewWord';
 
 const NewWords: NextPage = () => {
+  const { data } = useSWR('/api/words/myword', fetcher);
+  console.log("🚀 ~ file: newwords.tsx ~ line 13 ~ data", data)
+
+  if (!data) {
+    return (
+      <Box
+        w={'100%'}
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        style={{ height: 'calc(100vh - 10rem)' }}
+      >
+        <EmptyState width={500} />
+      </Box>
+    )
+  }
+
   return (
     <VStack width={'full'} px={'48'}>
       <Text color={'gray.400'} fontSize={'sm'} mb={6} width={'full'}>
@@ -19,6 +39,9 @@ const NewWords: NextPage = () => {
         </Text>
         <AddNewWord />
       </Flex>
+      <VStack>
+        {data && data.myWords.map(w => <p>{w.word}</p>)};
+      </VStack>
     </VStack>
   );
 }

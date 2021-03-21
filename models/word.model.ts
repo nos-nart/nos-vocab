@@ -2,20 +2,16 @@ import mongoose, { Document, Schema } from 'mongoose';
 
 export interface WordInterface extends Document {
   word: string;
-  creatorId: string;
-  definitions: string[];
-  color: string;
+  creator: any;
 }
 
 const WordSchema: Schema = new Schema(
   {
     word: String,
-    creatorId: {
+    creator: {
       ref: 'User',
       type: Schema.Types.ObjectId
-    },
-    definitions: [String],
-    color: String
+    }
   },
   {
     timestamps: true
