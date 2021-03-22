@@ -15,16 +15,30 @@ import {
   useDisclosure
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
+import { fetcher } from '@/utils/fetcher';
+import fetch from 'unfetch';
+import { useSession } from 'next-auth/client';
 
 import { PlusIcon, CheckIcon } from './svgs';
  
 export const AddNewWord = (): JSX.Element => {
+  const [session] = useSession();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { handleSubmit, errors, register, formState } = useForm();
+  const { data } = useSWR('/api/words/myword', fetcher);
 
-  const onSubmit = (values) => {
-    console.log('values ~> ', values);
+  const onSubmit = async (values: {[key: string]: string}) => {
+    const newWord = { word: values.word, creator: session.user.id };
+    mutate('/api/words/myword', { myWords: [...data.myWords, newWord] }, false);
+    await fetch('/api/words/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newWord)
+    });
+    mutate('/api/words/myword');
   };
 
   return (

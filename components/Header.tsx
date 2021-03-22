@@ -23,7 +23,6 @@ import { ProfileIcon, LogOutIcon, ChevronDownIcon } from './svgs';
 
 export const Header = (): JSX.Element => {
   const [session] = useSession();
-  console.log("🚀 ~ file: Header.tsx ~ line 26 ~ session", session)
   const { colorMode } = useColorMode();
 
   return (

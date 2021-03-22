@@ -7,12 +7,12 @@ import { PlusIcon } from '@/components/svgs';
 
 const Til: NextPage = () => {
   return (
-    <VStack>
-      <Text as={'p'} color={'gray.400'} size={'xs'}>
+    <VStack width={'full'} px={'48'}>
+      <Text color={'gray.400'} fontSize={'sm'} mb={6} width={'full'}>
         <Emoji symbol="🐣 " label={'hatched-chicken'} />&nbsp;
-        You learn something new every day; hat did you learn today? Submit interesting and specific facts about something that you just found out here.
+        You learn something new every day; what did you learn today? Submit interesting and specific facts about something that you just found out here.
       </Text>
-      <Flex justifyContent={'space-between'} alignItems={'center'} w={'100%'} my={6}>
+      <Flex justifyContent={'space-between'} alignItems={'center'} w={'100%'}>
         <Text fontSize="3xl" fontWeight={'bold'}>Today I Learned</Text>
         <Button
           size="sm"

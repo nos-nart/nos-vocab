@@ -18,9 +18,9 @@ export const getWords = async (): Promise<any> => {
   return words;
 }
 
-export const addWord = async (word: string, userId: string): Promise<any> => {
+export const addWord = async (word: string, creator: string): Promise<any> => {
   await connectToDB();
-  const _word = new Word({ word, creator: mongoose.Types.ObjectId(userId) });
+  const _word = new Word({ word, creator: mongoose.Types.ObjectId(creator) });
 
   const newWord = await _word.save();
   return newWord;
