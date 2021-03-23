@@ -12,3 +12,7 @@ export * from './SunFoggyIcon';
 export * from './ChevronDownIcon';
 export * from './CancelIcon';
 export * from './CheckIcon';
+export * from './StarIcon';
+export * from './MinusSquareIcon';
+export * from './NotepadIcon';
+export * from './HeartIcon';

@@ -15,7 +15,7 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
         <Header />
         <Flex>
           <Sidebar />
-          <Flex style={{ marginLeft: '250px' }} p={6} flexGrow={1}>
+          <Flex style={{ marginLeft: '250px', marginTop: '4rem' }} p={6} flexGrow={1}>
             {children}
           </Flex>
         </Flex>

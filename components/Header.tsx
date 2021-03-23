@@ -27,7 +27,7 @@ export const Header = (): JSX.Element => {
 
   return (
     <>
-      <header>
+      <header style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 99 }}>
         <Flex
           background={colorMode === "light" ? "gray.300" : "gray.900"}
           borderBottom={"1px"}

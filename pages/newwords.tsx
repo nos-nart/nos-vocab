@@ -7,6 +7,7 @@ import { fetcher } from '@/utils/fetcher';
 import { Emoji } from '@/components/Emoji';
 import { EmptyState } from '@/components/EmptyState';
 import { AddNewWord } from '@/components/AddNewWord';
+import { WordItem } from '@/components/WordItem';
 
 const NewWords: NextPage = () => {
   const { data } = useSWR('/api/words/myword', fetcher);
@@ -38,9 +39,13 @@ const NewWords: NextPage = () => {
         </Text>
         <AddNewWord />
       </Flex>
-      <VStack>
-        {data && data.myWords.map(w => <p>{w.word}</p>)};
-      </VStack>
+      <Flex flexDir={'column'} width={'full'}>
+        {
+          data && data.myWords.map((i: {[key: string]: string}) => {
+            return <WordItem showRemove={true} key={i._id} word={i}/>
+          })
+        }
+      </Flex>
     </VStack>
   );
 }

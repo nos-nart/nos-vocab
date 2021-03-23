@@ -48,6 +48,7 @@ export const AddNewWord = (): JSX.Element => {
     toast({
       title: "word added.",
       description: "successfully add a new word",
+      position: "top-right",
       status: "success",
       duration: 5000,
       isClosable: true,

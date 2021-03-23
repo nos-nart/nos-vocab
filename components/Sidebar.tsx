@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 
 import { SidebarLink } from './SidebarLink';
 import { Emoji } from './Emoji';
-import { BookmarkIcon, HashTagIcon, PuzzleIcon, QuoteIcon, SwordIcon, TrophyIcon } from './svgs';
+import { HeartIcon, HashTagIcon, PuzzleIcon, QuoteIcon, SwordIcon, TrophyIcon } from './svgs';
 
 export const Sidebar = (): JSX.Element => {
   const { colorMode } = useColorMode();
@@ -33,8 +33,8 @@ export const Sidebar = (): JSX.Element => {
           <SidebarLink href={'/quotes'}>
             <Icon as={QuoteIcon} mr={3} w={6} h={6} />quotes
           </SidebarLink>
-          <SidebarLink href={'/bookmark'}>
-            <Icon as={BookmarkIcon} mr={3} w={6} h={6} />bookmark
+          <SidebarLink href={'/favorites'}>
+            <Icon as={HeartIcon} mr={3} w={6} h={6} />favorites
           </SidebarLink>
           <SidebarLink href={'/archived'}>
             <Icon as={TrophyIcon} mr={3} w={6} h={6} />archived

@@ -1,12 +1,12 @@
 import React from 'react';
 import { NextPage } from 'next';
 
-const Bookmark: NextPage = () => {
+const Favorites: NextPage = () => {
   return (
     <>
-      This is Bookmark page
+      This is Favorites page
     </>
   );
 }
 
-export default Bookmark;
+export default Favorites;

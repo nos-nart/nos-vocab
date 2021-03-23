@@ -1,10 +1,10 @@
 import { NextSeo } from 'next-seo';
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import useSWR from 'swr';
 
 import { fetcher } from '@/utils/fetcher';
 import { EmptyState } from '@/components/EmptyState';
-
+import { WordItem } from '@/components/WordItem';
 // import dynamic from 'next/dynamic';
 
 // const UnauthenticatedComponent = dynamic(() =>
@@ -12,7 +12,13 @@ import { EmptyState } from '@/components/EmptyState';
 // )
 
 export default function Home() {
-  const { data } = useSWR('/api/words', fetcher);
+  const { data, isValidating } = useSWR('/api/words', fetcher);
+
+  if (isValidating) {
+    return (
+      <>...loading</>
+    )
+  }
 
   if (!data) {
     return (
@@ -34,7 +40,16 @@ export default function Home() {
         title="nosnart vocab"
         description="vocabulary is the foundation of language"
       />
-      {JSON.stringify(data, null , 2)}
+      <Flex
+        flexWrap={'wrap'}
+        width={'full'} px={'48'}
+      >
+        {
+          data && data.words.map(
+            (i: {[key: string]: string}) => <WordItem showRemove={false} key={i._id} word={i} />
+          )
+        }
+      </Flex>
     </>
   )
 }

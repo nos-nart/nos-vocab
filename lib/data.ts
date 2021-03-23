@@ -11,7 +11,7 @@ export const getUser = async (userId: string): Promise<any> => {
   return user.toObject();
 }
 
-export const getWords = async (): Promise<any> => {ß
+export const getWords = async (): Promise<any> => {
   await connectToDB();
   const words = await Word.find({});
 
