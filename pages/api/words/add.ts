@@ -9,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (!session) {
       return res.status(401).send('Unauthorized');
     }
-    const newWord = await addWord(req.body.word, req.body.creator);
+    const newWord = await addWord(req.body);
     return res.status(201).json({ newWord });
   } catch (error) {
     return res.status(400).json({ error });

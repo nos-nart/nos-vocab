@@ -10,7 +10,6 @@ import { AddNewWord } from '@/components/AddNewWord';
 
 const NewWords: NextPage = () => {
   const { data } = useSWR('/api/words/myword', fetcher);
-  console.log("🚀 ~ file: newwords.tsx ~ line 13 ~ data", data)
 
   if (!data) {
     return (

@@ -3,6 +3,7 @@ import mongoose, { Document, Schema } from 'mongoose';
 export interface WordInterface extends Document {
   word: string;
   creator: any;
+  creatorName: string;
 }
 
 const WordSchema: Schema = new Schema(
@@ -11,7 +12,8 @@ const WordSchema: Schema = new Schema(
     creator: {
       ref: 'User',
       type: Schema.Types.ObjectId
-    }
+    },
+    creatorName: String
   },
   {
     timestamps: true

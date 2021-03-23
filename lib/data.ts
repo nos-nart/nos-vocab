@@ -11,16 +11,17 @@ export const getUser = async (userId: string): Promise<any> => {
   return user.toObject();
 }
 
-export const getWords = async (): Promise<any> => {
+export const getWords = async (): Promise<any> => {ß
   await connectToDB();
   const words = await Word.find({});
 
   return words;
 }
 
-export const addWord = async (word: string, creator: string): Promise<any> => {
+export const addWord = async (body: {[key: string]: string}): Promise<any> => {
   await connectToDB();
-  const _word = new Word({ word, creator: mongoose.Types.ObjectId(creator) });
+  const { word, creator, creatorName } = body;
+  const _word = new Word({ word, creator: mongoose.Types.ObjectId(creator), creatorName });
 
   const newWord = await _word.save();
   return newWord;

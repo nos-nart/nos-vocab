@@ -12,7 +12,8 @@ import {
   FormControl,
   Input,
   Box,
-  useDisclosure
+  useDisclosure,
+  useToast
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import useSWR, { mutate } from 'swr';
@@ -25,11 +26,16 @@ import { PlusIcon, CheckIcon } from './svgs';
 export const AddNewWord = (): JSX.Element => {
   const [session] = useSession();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
   const { handleSubmit, errors, register, formState } = useForm();
   const { data } = useSWR('/api/words/myword', fetcher);
 
   const onSubmit = async (values: {[key: string]: string}) => {
-    const newWord = { word: values.word, creator: session.user.id };
+    const newWord = {
+      word: values.word,
+      creator: session.user.id,
+      creatorName: session.user.name
+    };
     mutate('/api/words/myword', { myWords: [...data.myWords, newWord] }, false);
     await fetch('/api/words/add', {
       method: 'POST',
@@ -39,6 +45,14 @@ export const AddNewWord = (): JSX.Element => {
       body: JSON.stringify(newWord)
     });
     mutate('/api/words/myword');
+    toast({
+      title: "word added.",
+      description: "successfully add a new word",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+    onClose();
   };
 
   return (
@@ -75,6 +89,7 @@ export const AddNewWord = (): JSX.Element => {
                       message: 'required this field'
                     }
                   })}
+                  autoComplete="off"
                 />
                 <FormErrorMessage>
                   {errors.word && errors.word.message}
