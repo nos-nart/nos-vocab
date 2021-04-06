@@ -17,7 +17,7 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
         <Sidebar
           isMinimized={isMinimized}
         />
-        <Flex flexGrow={1} flexDir={'column'} marginLeft={!isMinimized ? 250 : ''}>
+        <Flex flexGrow={1} flexDir={'column'} marginLeft={!isMinimized ? 250 : 0}>
           <Header
             isMinimized={isMinimized}
             setIsMinimized={setIsMinimized}

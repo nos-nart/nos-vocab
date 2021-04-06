@@ -7,7 +7,7 @@ import { FiPlus } from "react-icons/fi"
 
 const Til: NextPage = () => {
   return (
-    <VStack width={'full'} px={'48'}>
+    <VStack px={{ base: '4', lg: '48' }}>
       <Text color={'gray.400'} fontSize={'sm'} mb={6} width={'full'}>
         <Emoji symbol="🐣 " label={'hatched-chicken'} />&nbsp;
         You learn something new every day; what did you learn today? Submit interesting and specific facts about something that you just found out here.
