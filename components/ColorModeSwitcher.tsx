@@ -3,15 +3,15 @@ import {
   useColorModeValue,
   IconButton,
   IconButtonProps,
-} from "@chakra-ui/react"
-import { SunFoggyIcon, MoonFoggyIcon } from './svgs';
+} from "@chakra-ui/react";
+import { RiSunFoggyLine, RiMoonFoggyFill } from "react-icons/ri";
 
 type ColorModeSwitcherProps = Omit<IconButtonProps, "aria-label">
 
 export const ColorModeSwitcher = (props: ColorModeSwitcherProps) => {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue('dark', 'light');
-  const SwitchIcon = useColorModeValue(MoonFoggyIcon, SunFoggyIcon);
+  const SwitchIcon = useColorModeValue(RiMoonFoggyFill, RiSunFoggyLine);
 
   return (
     <IconButton
@@ -21,7 +21,7 @@ export const ColorModeSwitcher = (props: ColorModeSwitcherProps) => {
       color="current"
       marginLeft="2"
       onClick={toggleColorMode}
-      icon={<SwitchIcon width={25} />}
+      icon={<SwitchIcon size={25} />}
       aria-label={`Switch to ${text} mode`}
       {...props}
     />

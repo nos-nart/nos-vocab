@@ -13,8 +13,8 @@ import {
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import dayjs from 'dayjs';
 import { useSession } from 'next-auth/client';
+import { RiStarSFill, RiSubtractFill, RiSurveyLine } from "react-icons/ri";
 
-import { StarIcon, MinusSquareIcon, NotepadIcon } from './svgs';
 import { DATETIME_FORMAT } from '@/config/index';
 import OxfordIcon from '../svg/oxford.svg';
 import CambridgeIcon from '../svg/cambridge.svg';
@@ -48,7 +48,7 @@ export const WordItem = ({word, showRemove}: WordItemProps) => {
               variant={'ghost'}
               color={'#ccd0d5'}
               aria-label="star"
-              icon={<StarIcon width={20} />}
+              icon={<RiStarSFill size={20} />}
             />
           </Tooltip>
           <Tooltip label="add to learning" placement="bottom" bg="gray.300" color="black">
@@ -57,7 +57,7 @@ export const WordItem = ({word, showRemove}: WordItemProps) => {
               variant={'ghost'}
               colorScheme={'blue'}
               aria-label="note-pad"
-              icon={<NotepadIcon width={20} />}
+              icon={<RiSurveyLine size={20} />}
             />
           </Tooltip>
           {
@@ -67,7 +67,7 @@ export const WordItem = ({word, showRemove}: WordItemProps) => {
                 variant={'ghost'}
                 color={'#F87171'}
                 aria-label="minus-square"
-                icon={<MinusSquareIcon width={20} />}
+                icon={<RiSubtractFill size={20} />}
               />
             </Tooltip>
           }

@@ -12,46 +12,49 @@ import {
   MenuItem,
   useColorMode,
 } from '@chakra-ui/react';
-import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { AppLogo } from './AppLogo';
 import GoogleIcon from '../svg/googleicon.svg';
-import { ProfileIcon, LogOutIcon, ChevronDownIcon } from './svgs';
+import { FiLogOut } from "react-icons/fi";
+import { RiUser5Fill, RiArrowDownSLine, RiLayoutLeft2Line } from "react-icons/ri";
 
+type HeaderProps = {
+  isMinimized?: boolean;
+  setIsMinimized?: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export const Header = (): JSX.Element => {
+export const Header = ({ isMinimized, setIsMinimized }: HeaderProps): JSX.Element => {
   const [session] = useSession();
   const { colorMode } = useColorMode();
 
   return (
     <>
-      <header style={{ position: 'fixed', top: 0, left: 0, width: '100vw', zIndex: 99 }}>
-        <Flex
-          background={colorMode === "light" ? "gray.300" : "gray.900"}
-          borderBottom={"1px"}
-          borderBottomColor={colorMode === "light" ? "transparent" : "gray.700"}
-          height={'16'}
-          px={8}
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Link href={'/'}>
-            <a>
-              <Flex alignItems="center">
-                <AppLogo width={45} />
-                <Text as="span" lineHeight={3} fontSize={'xs'} ml={2} fontWeight={'bold'} textColor={'blue.500'}>nos<br/>vocab</Text>
-              </Flex>
-            </a>
-          </Link>
+      <Box
+        w={'full'}
+        position={'sticky'}
+        top={0}
+        background={colorMode === "light" ? "gray.300" : "gray.900"}
+        borderBottom={"1px"}
+        borderBottomColor={colorMode === "light" ? "transparent" : "gray.700"}
+        px={8}
+        py={2}
+        zIndex="50"
+      >
+        <Flex justifyContent="space-between" alignItems="center">
+          <IconButton
+            variant={'ghost'}
+            aria-label="layout"
+            icon={<RiLayoutLeft2Line size={25} />}
+            onClick={() => setIsMinimized(!isMinimized)}
+          />
           <Box display="flex" alignItems="center">
             <ColorModeSwitcher justifySelf="flex-end" mr={4} />
             {!session && <LoginButton />}
-            {session && <LoggedInButton />}
+          {session && <LoggedInButton />}
           </Box>
         </Flex>
-      </header>
+      </Box>
     </>
   )
 }
@@ -92,17 +95,17 @@ function LoggedInButton() {
           <MenuButton
             as={IconButton}
             aria-label="Profile"
-            icon={<ChevronDownIcon width={20} />}
+            icon={<RiArrowDownSLine size={20} />}
             size="sm"
             variant="outline"
           />
           <MenuList>
-            <MenuItem icon={<ProfileIcon width={20} />}>
+            <MenuItem icon={<RiUser5Fill size={20} />}>
               Profile
             </MenuItem>
             <MenuItem
               as="button"
-              icon={<LogOutIcon width={20} />}
+              icon={<FiLogOut size={20} />}
               onClick={() => signOut({ callbackUrl: "/" })}
             >
               Log out

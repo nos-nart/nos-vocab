@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { Text, Flex, Button, VStack } from '@chakra-ui/react';
 
 import { Emoji } from '@/components/Emoji';
-import { PlusIcon } from '@/components/svgs';
+import { FiPlus } from "react-icons/fi"
 
 const Til: NextPage = () => {
   return (
@@ -17,7 +17,7 @@ const Til: NextPage = () => {
         <Button
           size="sm"
           colorScheme={'facebook'}
-          leftIcon={<PlusIcon width={20} />}
+          leftIcon={<FiPlus size={20} />}
         >
           Add
         </Button>

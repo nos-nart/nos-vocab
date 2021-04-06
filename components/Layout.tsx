@@ -9,15 +9,20 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children }: LayoutProps): JSX.Element => {
+  const [isMinimized, setIsMinimized] = React.useState<boolean>(false);
+
   return (
     <>
-      <Box h={'100%'} minHeight={'100vh'}>
-        <Header />
-        <Flex>
-          <Sidebar />
-          <Flex style={{ marginLeft: '250px', marginTop: '4rem' }} p={6} flexGrow={1}>
-            {children}
-          </Flex>
+      <Box display="flex" w="full" h={'100%'} minHeight={'100vh'}>
+        <Sidebar
+          isMinimized={isMinimized}
+        />
+        <Flex flexGrow={1} flexDir={'column'} marginLeft={!isMinimized ? 250 : ''}>
+          <Header
+            isMinimized={isMinimized}
+            setIsMinimized={setIsMinimized}
+          />
+          {children}
         </Flex>
       </Box>
     </>

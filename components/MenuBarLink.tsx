@@ -3,7 +3,7 @@ import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 
-export const SidebarLink: FC<LinkProps> = ({ href, ...props }) => {
+export const MenuBarLink: FC<LinkProps> = ({ href, ...props }) => {
   const router = useRouter();
   const activeStyle = router.pathname.includes(href as string) && `active`;
   const bg = `#2b6cb0`;
@@ -25,7 +25,7 @@ export const SidebarLink: FC<LinkProps> = ({ href, ...props }) => {
           transition: all 200ms linear;
           letter-spacing: 0.5px;
           overflow: hidden;
-          padding: 1rem 2rem;
+          padding: 0.8rem 2rem;
           display: inline-flex;
           align-items: center;
           width: 100%;

@@ -21,7 +21,7 @@ import { fetcher } from '@/utils/fetcher';
 import fetch from 'unfetch';
 import { useSession } from 'next-auth/client';
 
-import { PlusIcon, CheckIcon } from './svgs';
+import { FiCheck, FiPlus } from "react-icons/fi";
  
 export const AddNewWord = (): JSX.Element => {
   const [session] = useSession();
@@ -61,7 +61,7 @@ export const AddNewWord = (): JSX.Element => {
       <Button
         size="sm"
         colorScheme={'facebook'}
-        leftIcon={<PlusIcon width={20} />}
+        leftIcon={<FiPlus size={20} />}
         onClick={onOpen}
       >
         Add
@@ -109,7 +109,7 @@ export const AddNewWord = (): JSX.Element => {
                   type="submit"
                   size="sm"
                   colorScheme={'green'}
-                  leftIcon={<CheckIcon width={20} />}
+                  leftIcon={<FiCheck size={20} />}
                 >
                   add
                 </Button>

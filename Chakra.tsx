@@ -6,24 +6,7 @@ import {
 } from '@chakra-ui/react';
 import { GetServerSidePropsContext } from 'next';
 import { ReactNode } from 'react';
-import { Global } from "@emotion/react";
-
-const fonts = {
-  body: 'Inter, -apple-system, BlinkMacSystemFont',
-}
-const theme = extendTheme({
-  styles: {
-    global: {
-      'body': {
-        scrollBehavior: 'smooth'
-      },
-      '#__next': {
-        minHeight: '100vh'
-      }
-    }
-  },
-  fonts
-});
+import customTheme from './theme';
 
 interface ChakraProps {
   cookies?: string
@@ -36,7 +19,7 @@ export const Chakra = ({ children, cookies }: ChakraProps) => {
       colorModeManager={
         cookies ? cookieStorageManager(cookies) : localStorageManager
       }
-      theme={theme}
+      theme={customTheme}
     >
       {children}
     </ChakraProvider>
